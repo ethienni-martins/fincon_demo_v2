@@ -23,25 +23,24 @@ if 'selected_category' not in st.session_state:
 
 # Display buttons for each category
 for category in categories:
-    if st.session_state.selected_category == category:
-        # Button with green color when selected
-        button_style = "background-color: #4CAF50; color: white; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
-    else:
-        # Default button style
-        button_style = "background-color: #f1f1f1; color: black; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
+    col1, col2, col3 = st.columns([2, 1, 2])
+    with col1:
+        if st.session_state.selected_category == category:
+            button_style = "background-color: #4CAF50; color: white; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
+        else:
+            button_style = "background-color: #f1f1f1; color: black; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
+        
+        if st.button(category, key=category):
+            st.session_state.selected_category = category
 
-    if st.button(category, key=category, help="Clique para selecionar esta categoria"):
-        st.session_state.selected_category = category
-
-    # Apply custom button style using HTML
-    st.markdown(f'<button style="{button_style}">{category}</button>', unsafe_allow_html=True)
-
+        # Apply custom button style using HTML
+        st.markdown(f'<button style="{button_style}">{category}</button>', unsafe_allow_html=True)
+        
     # Show date inputs if the category is selected
     if st.session_state.selected_category == category:
-        col1, col2 = st.columns(2)
-        with col1:
-            data_inicial = st.date_input("Data Inicial", key=f"{category}_data_inicial", value=date.today())
         with col2:
+            data_inicial = st.date_input("Data Inicial", key=f"{category}_data_inicial", value=date.today())
+        with col3:
             data_final = st.date_input("Data Final", key=f"{category}_data_final", value=date.today())
 
         # Display the selected dates
