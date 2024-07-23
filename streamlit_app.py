@@ -3,7 +3,14 @@ from datetime import date
 
 # Welcome message
 st.title("Bem-vindo(a) ao Portal Financeiro")
-st.write("Selecione a categoria para visualizar os gráficos e informações:")
+st.write("Escolha as datas para visualizar as categorias:")
+
+# Date input boxes at the beginning
+col1, col2 = st.columns(2)
+with col1:
+    data_inicial = st.date_input("Data Inicial", value=date.today())
+with col2:
+    data_final = st.date_input("Data Final", value=date.today())
 
 # Category options
 categories = [
@@ -21,34 +28,23 @@ categories = [
 if 'selected_category' not in st.session_state:
     st.session_state.selected_category = None
 
-# Display buttons for each category with date inputs
+# Display buttons for each category
 for category in categories:
-    col1, col2, col3 = st.columns([2, 1, 2])
+    col1, col2 = st.columns([3, 1])
     with col1:
         button_clicked = st.button(category, key=category)
         
         if button_clicked:
             st.session_state.selected_category = category
 
-    if st.session_state.selected_category == category:
-        with col2:
-            data_inicial = st.date_input("Data Inicial", key=f"{category}_data_inicial", value=date.today())
-        with col3:
-            data_final = st.date_input("Data Final", key=f"{category}_data_final", value=date.today())
-
-        # Display the selected dates
-        st.write(f"Para a categoria {category}, você selecionou as datas:")
-        st.write(f"Data Inicial: {data_inicial}")
-        st.write(f"Data Final: {data_final}")
-
 # Change button colors using session state
 if st.session_state.selected_category:
     selected_button_style = """
     <style>
-    div.stButton > button:first-child {
+    div.stButton > button[title="{}"] {{
         background-color: #4CAF50;
         color: white;
-    }
+    }}
     </style>
-    """
+    """.format(st.session_state.selected_category)
     st.markdown(selected_button_style, unsafe_allow_html=True)
