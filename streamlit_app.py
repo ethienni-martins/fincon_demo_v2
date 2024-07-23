@@ -44,4 +44,22 @@ if 'selected_category' not in st.session_state:
     st.session_state.selected_category = None
 
 # Display buttons for each category
-for category in ca
+for category in categories:
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        button_clicked = st.button(category, key=category)
+        
+        if button_clicked:
+            st.session_state.selected_category = category
+
+# Change button colors using session state
+if st.session_state.selected_category:
+    selected_button_style = """
+    <style>
+    div.stButton > button[title="{}"] {{
+        background-color: #4CAF50;
+        color: white;
+    }}
+    </style>
+    """.format(st.session_state.selected_category)
+    st.markdown(selected_button_style, unsafe_allow_html=True)
