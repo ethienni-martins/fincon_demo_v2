@@ -21,28 +21,15 @@ categories = [
 if 'selected_category' not in st.session_state:
     st.session_state.selected_category = None
 
-# Function to render button with appropriate style
-def render_button(category):
-    button_clicked = st.button(category, key=category)
-    if button_clicked:
-        st.session_state.selected_category = category
-    return button_clicked
-
 # Display buttons for each category with date inputs
 for category in categories:
     col1, col2, col3 = st.columns([2, 1, 2])
     with col1:
-        if st.session_state.selected_category == category:
-            button_style = "background-color: #4CAF50; color: white; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
-        else:
-            button_style = "background-color: #f1f1f1; color: black; border: none; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"
+        button_clicked = st.button(category, key=category)
         
-        st.markdown(f'<button style="{button_style}">{category}</button>', unsafe_allow_html=True)
-        
-        if render_button(category):
+        if button_clicked:
             st.session_state.selected_category = category
 
-    # Show date inputs if the category is selected
     if st.session_state.selected_category == category:
         with col2:
             data_inicial = st.date_input("Data Inicial", key=f"{category}_data_inicial", value=date.today())
@@ -53,3 +40,15 @@ for category in categories:
         st.write(f"Para a categoria {category}, você selecionou as datas:")
         st.write(f"Data Inicial: {data_inicial}")
         st.write(f"Data Final: {data_final}")
+
+# Change button colors using session state
+if st.session_state.selected_category:
+    selected_button_style = """
+    <style>
+    div.stButton > button:first-child {
+        background-color: #4CAF50;
+        color: white;
+    }
+    </style>
+    """
+    st.markdown(selected_button_style, unsafe_allow_html=True)
