@@ -1,8 +1,10 @@
 import streamlit as st
-st. set_page_config(layout="wide")
 from datetime import date
 
-# Align everything to the leftmost position on the screen
+# Set page layout to wide
+st.set_page_config(layout="wide")
+
+# Align everything to the leftmost position on the screen and adjust date input width
 st.markdown(
     """
     <style>
@@ -21,6 +23,9 @@ st.markdown(
         text-align: center;
         margin-bottom: 5px;
     }
+    .stDateInput {
+        width: 200px;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -33,9 +38,9 @@ st.write("Escolha as datas para visualizar as categorias:")
 # Date input boxes at the beginning
 col1, col2 = st.columns([1, 1])
 with col1:
-    data_inicial = st.date_input("Data Inicial", value=date.today())
+    data_inicial = st.date_input("Data Inicial", value=date.today(), key="data_inicial")
 with col2:
-    data_final = st.date_input("Data Final", value=date.today())
+    data_final = st.date_input("Data Final", value=date.today(), key="data_final")
 
 # Category options
 categories = [
