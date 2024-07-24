@@ -24,7 +24,7 @@ st.markdown(
         margin-bottom: 5px;
     }
     .stDateInput input {
-        width: 120px;
+        width: 80px;
     }
     </style>
     """,
