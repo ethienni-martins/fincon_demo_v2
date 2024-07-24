@@ -18,7 +18,7 @@ st.markdown(
     }
     div.stButton > button {
         width: auto;
-        min-width: 150px;
+        min-width: 165px;
         display: inline-block;
         text-align: center;
         margin-bottom: 5px;
