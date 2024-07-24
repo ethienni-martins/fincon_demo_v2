@@ -7,13 +7,15 @@ st.markdown(
     <style>
     .main > div {
         display: flex;
-        justify-content: flex-start;
+        flex-direction: column;
         align-items: flex-start;
     }
     div.stButton > button {
-        width: 100%;
+        width: auto;
+        min-width: 200px;
         display: inline-block;
         text-align: center;
+        margin-bottom: 5px;
     }
     </style>
     """,
@@ -25,7 +27,7 @@ st.title("Bem-vindo(a) ao Portal Financeiro")
 st.write("Escolha as datas para visualizar as categorias:")
 
 # Date input boxes at the beginning
-col1, col2 = st.columns([1, 1])
+col1, col2 = st.columns(2)
 with col1:
     data_inicial = st.date_input("Data Inicial", value=date.today())
 with col2:
@@ -61,7 +63,8 @@ if st.session_state.selected_category:
     div.stButton > button[title="{}"] {{
         background-color: #4CAF50;
         color: white;
-        width: 100%;
+        width: auto;
+        min-width: 200px;
         display: inline-block;
         text-align: center;
     }}
