@@ -18,13 +18,13 @@ st.markdown(
     }
     div.stButton > button {
         width: auto;
-        min-width: 100px;
+        min-width: 150px;
         display: inline-block;
         text-align: center;
         margin-bottom: 5px;
     }
     .stDateInput {
-        width: 200px;
+        width: 100px;
     }
     </style>
     """,
