@@ -1,18 +1,17 @@
 import streamlit as st
 from datetime import date
 
-# Align everything to the left and centralize button labels
+# Align everything to the leftmost position on the screen
 st.markdown(
     """
     <style>
-    .css-1lcbmhc.e1fqkh3o2 {
+    .main > div {
+        display: flex;
         justify-content: flex-start;
-    }
-    .css-1lcbmhc.e1fqkh3o2 > div {
-        flex: 1;
+        align-items: flex-start;
     }
     div.stButton > button {
-        width: 40%;
+        width: 100%;
         display: inline-block;
         text-align: center;
     }
@@ -26,7 +25,7 @@ st.title("Bem-vindo(a) ao Portal Financeiro")
 st.write("Escolha as datas para visualizar as categorias:")
 
 # Date input boxes at the beginning
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1, 1])
 with col1:
     data_inicial = st.date_input("Data Inicial", value=date.today())
 with col2:
@@ -50,12 +49,10 @@ if 'selected_category' not in st.session_state:
 
 # Display buttons for each category
 for category in categories:
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        button_clicked = st.button(category, key=category)
+    button_clicked = st.button(category, key=category)
         
-        if button_clicked:
-            st.session_state.selected_category = category
+    if button_clicked:
+        st.session_state.selected_category = category
 
 # Change button colors using session state
 if st.session_state.selected_category:
@@ -64,7 +61,7 @@ if st.session_state.selected_category:
     div.stButton > button[title="{}"] {{
         background-color: #4CAF50;
         color: white;
-        width: 40%;
+        width: 100%;
         display: inline-block;
         text-align: center;
     }}
