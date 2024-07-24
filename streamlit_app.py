@@ -10,6 +10,9 @@ st.markdown(
         flex-direction: column;
         align-items: flex-start;
     }
+    .css-1lcbmhc, .css-1outpf7 {
+        padding: 0;
+    }
     div.stButton > button {
         width: auto;
         min-width: 200px;
@@ -27,7 +30,7 @@ st.title("Bem-vindo(a) ao Portal Financeiro")
 st.write("Escolha as datas para visualizar as categorias:")
 
 # Date input boxes at the beginning
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1, 1])
 with col1:
     data_inicial = st.date_input("Data Inicial", value=date.today())
 with col2:
