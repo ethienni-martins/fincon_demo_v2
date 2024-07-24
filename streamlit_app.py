@@ -1,4 +1,5 @@
 import streamlit as st
+st. set_page_config(layout="wide")
 from datetime import date
 
 # Align everything to the leftmost position on the screen
