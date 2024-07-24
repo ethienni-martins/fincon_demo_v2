@@ -12,7 +12,7 @@ st.markdown(
         flex: 1;
     }
     div.stButton > button {
-        width: 80%;
+        width: 100%;
         display: inline-block;
         text-align: center;
     }
@@ -64,7 +64,7 @@ if st.session_state.selected_category:
     div.stButton > button[title="{}"] {{
         background-color: #4CAF50;
         color: white;
-        width: 80%;
+        width: 100%;
         display: inline-block;
         text-align: center;
     }}
