@@ -21,7 +21,7 @@ st.markdown(
         min-width: 165px;
         display: inline-block;
         text-align: center;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
     .stDateInput input {
         width: 120px;
