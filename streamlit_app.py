@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import date
 
-# Align everything to the left
+# Align everything to the left and centralize button labels
 st.markdown(
     """
     <style>
@@ -10,6 +10,11 @@ st.markdown(
     }
     .css-1lcbmhc.e1fqkh3o2 > div {
         flex: 1;
+    }
+    div.stButton > button {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
     }
     </style>
     """,
@@ -59,6 +64,9 @@ if st.session_state.selected_category:
     div.stButton > button[title="{}"] {{
         background-color: #4CAF50;
         color: white;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
     }}
     </style>
     """.format(st.session_state.selected_category)
