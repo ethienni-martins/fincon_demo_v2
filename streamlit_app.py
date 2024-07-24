@@ -23,8 +23,8 @@ st.markdown(
         text-align: center;
         margin-bottom: 5px;
     }
-    .stDateInput {
-        width: 150px;
+    .stDateInput input {
+        width: 120px;
     }
     </style>
     """,
