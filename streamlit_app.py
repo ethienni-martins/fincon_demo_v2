@@ -18,10 +18,10 @@ st.markdown(
     }
     div.stButton > button {
         width: auto;
-        min-width: 165px;
+        min-width: 200px;
         display: inline-block;
         text-align: center;
-        margin-bottom: 3px;
+        margin-bottom: 5px;
     }
     .stDateInput input {
         width: 120px;
@@ -38,9 +38,21 @@ st.write("Escolha as datas para visualizar as categorias:")
 # Date input boxes at the beginning
 col1, col2 = st.columns([1, 1])
 with col1:
-    data_inicial = st.date_input("Data Inicial", value=date.today(), key="data_inicial")
+    data_inicial = st.date_input(
+        "Data Inicial", 
+        value=date.today(), 
+        min_value=date(2023, 8, 23), 
+        max_value=date(2023, 11, 30),
+        key="data_inicial"
+    )
 with col2:
-    data_final = st.date_input("Data Final", value=date.today(), key="data_final")
+    data_final = st.date_input(
+        "Data Final", 
+        value=date.today(), 
+        min_value=date(2023, 8, 23), 
+        max_value=date(2023, 11, 30),
+        key="data_final"
+    )
 
 # Category options
 categories = [
