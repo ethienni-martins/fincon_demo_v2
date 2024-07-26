@@ -40,7 +40,7 @@ col1, col2 = st.columns([1, 1])
 with col1:
     data_inicial = st.date_input(
         "Data Inicial", 
-        value=date.today(), 
+        value=date(2023, 8, 23), 
         min_value=date(2023, 8, 23), 
         max_value=date(2023, 11, 30),
         key="data_inicial"
@@ -48,7 +48,7 @@ with col1:
 with col2:
     data_final = st.date_input(
         "Data Final", 
-        value=date.today(), 
+        value=date(2023, 11, 30), 
         min_value=date(2023, 8, 23), 
         max_value=date(2023, 11, 30),
         key="data_final"
